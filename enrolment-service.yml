@@ -1,1 +1,43 @@
+server:
+  port: 8083
+  forward-headers-strategy: framework
+rabbitmq:
+  queue:
+    name: notification.queue
+  exchange:
+    name: notification.exchange
 
+  notification:
+    routing:
+      key: notification.#
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+
+spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+        alphanumeric-ids:
+          enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5433/enrolment_db
+    username: username
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    

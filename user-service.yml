@@ -13,7 +13,7 @@ jwt:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5435/user_db
+    url: jdbc:postgresql://user_service_db/user_db
     username: username
     password: password
   jpa:

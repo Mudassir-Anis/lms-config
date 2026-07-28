@@ -1,1 +1,50 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        registerHealthIndicator: true
+    instances:
+      userServiceCB:
+        baseConfig: default
+      courseServiceCB:
+        baseConfig: default
+      enrolmentServiceCB:
+        baseConfig: default
+      notificationServiceCB:
+        baseConfig: default
 
+  timeLimiter:
+    configs:
+      default:
+        timeoutDuration: 1s
+    instances:
+      userServiceCB:
+        baseConfig: default
+      courseServiceCB:
+        baseConfig: default
+      enrolmentServiceCB:
+        baseConfig: default
+      notificationServiceCB:
+        baseConfig: default
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8085/eureka/

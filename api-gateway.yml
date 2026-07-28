@@ -1,1 +1,69 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: user-service-route
+              uri: lb://user-service
+              predicates:
+                - Path=/user/**,/auth/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    id: userServiceCB
+                    fallbackUri: forward:/fallback/user
 
+            - id: course-service-route
+              uri: lb://course-service
+              predicates:
+                - Path=/course/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    id: courseServiceCB
+                    fallbackUri: forward:/fallback/course
+
+            - id: enrolment-service-route
+              uri: lb://enrolment-service
+              predicates:
+                - Path=/enrolment/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    id: enrolmentServiceCB
+                    fallbackUri: forward:/fallback/enrolment
+
+            - id: notification-service-route
+              uri: lb://notification-service
+              predicates:
+                - Path=/notification/**
+              filters:
+#                - StripPrefix=1
+                - name: CircuitBreaker
+                  args:
+                    id: notificationServiceCB
+                    fallbackUri: forward:/fallback/notification
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web.servlet.function: TRACE
+
+debug: true
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: User Service
+        url: /user/v3/api-docs
+
+      - name: Course Service
+        url: /course/v3/api-docs
+
+      - name: Enrolment Service
+        url: /enrolment/v3/api-docs
+
+      - name: Notification Service
+        url: /notification/v3/api-docs

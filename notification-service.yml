@@ -1,5 +1,5 @@
 server:
-  root: 8082
+  port: 8082
   forward-headers-strategy: framework
   
 rabbitmq:
@@ -35,7 +35,7 @@ spring:
       port: 6379
       
   rabbitmq:
-  host: localhost
-  port: 5672
-  username: guest
-  password: guest
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

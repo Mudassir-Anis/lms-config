@@ -48,3 +48,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8085/eureka/
+jwt:
+  secretKey: fsjkkssokmanhbjewoksaknhdnjjjskaklaijjdnneujnc

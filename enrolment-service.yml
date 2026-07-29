@@ -23,7 +23,7 @@ spring:
         alphanumeric-ids:
           enabled: true
   datasource:
-    url: jdbc:postgresql://enrolment_service_db/enrolment_db
+    url: jdbc:postgresql://enrolment_service_db:5432/enrolment_db
     username: username
     password: password
   jpa:

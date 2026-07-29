@@ -20,7 +20,7 @@ spring:
             - id: course-service-route
               uri: lb://course-service
               predicates:
-                - Path=/course/**
+                - Path=/course/**,/course-module/**,/course-assignment/**,/course-video-content/**,/course-reading-content/**,/course-faq/**
               filters:
                 - name: CircuitBreaker
                   args:
@@ -30,7 +30,7 @@ spring:
             - id: enrolment-service-route
               uri: lb://enrolment-service
               predicates:
-                - Path=/enrolment/**
+                - Path=/enrolment/**,/course-progress/**
               filters:
                 - name: CircuitBreaker
                   args:
@@ -42,7 +42,6 @@ spring:
               predicates:
                 - Path=/notification/**
               filters:
-#                - StripPrefix=1
                 - name: CircuitBreaker
                   args:
                     id: notificationServiceCB

@@ -18,8 +18,8 @@ springdoc:
     
 spring:
   datasource:
-    # url: jdbc:postgresql://notification_service_db:5432/notification_db
-    url: jdbc:postgresql://localhost:5436/notification_db
+    url: jdbc:postgresql://notification_service_db:5432/notification_db
+    # url: jdbc:postgresql://localhost:5436/notification_db
     username: username
     password: password
   jpa:

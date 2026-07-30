@@ -44,14 +44,14 @@ management:
     circuitbreakers:
       enabled: true
 
-# eureka:
-#   client:
-#     serviceUrl:
-#       defaultZone: http://registry-server:8761/eureka/
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://registry-server:8761/eureka/
+# eureka:
+#   client:
+#     serviceUrl:
+#       defaultZone: http://localhost:8761/eureka/
       
 jwt:
   secretKey: fsjkkssokmanhbjewoksaknhdnjjjskaklaijjdnneujnc

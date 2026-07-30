@@ -6,7 +6,8 @@ springdoc:
     path: /v3/api-docs
 spring:
   datasource:
-    url: jdbc:postgresql://course_service_db:5432/course_db
+    # url: jdbc:postgresql://course_service_db:5432/course_db
+    url: jdbc:postgresql://localhost:5434/course_db
     username: username
     password: password
   jpa:
